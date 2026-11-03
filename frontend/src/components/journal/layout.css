@@ -1,0 +1,248 @@
+/* Karhdo PageLayout/Header/PostLayout/PostHeader/prose adaptation. Component CSS is in journal.css. */
+.journal {
+  display: flow-root;
+}
+.journal-container {
+  width: 100%;
+  max-width: 1152px;
+  margin: auto;
+  padding-inline: 24px;
+}
+.journal-header {
+  position: sticky;
+  top: 12px;
+  z-index: 20;
+  max-width: 1152px;
+  margin: 12px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--surface-solid) 90%, transparent);
+  backdrop-filter: blur(14px);
+}
+.journal-header .wordmark {
+  font-weight: 600;
+  font-size: 18px;
+}
+.journal-header nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.journal-header nav a {
+  padding: 6px 12px;
+  border-radius: 10px;
+  color: var(--fg-soft);
+  font-size: 15px;
+}
+.journal-header nav a:hover {
+  background: var(--line);
+  color: var(--fg);
+}
+.journal-footer {
+  border-top: 1px solid var(--line);
+  margin-top: 48px;
+  padding-block: 24px;
+  color: var(--fg-soft);
+  font-size: 14px;
+}
+.journal-list,
+.journal-post {
+  padding-block: 56px 64px;
+}
+.journal h1 {
+  font-size: clamp(32px, 4.6vw, 48px);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  font-weight: 700;
+  margin-block: 14px 16px;
+}
+.journal .eyebrow {
+  font: 11.5px var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg-soft);
+  margin-bottom: 10px;
+}
+.journal .list-heading > p:not(.eyebrow) {
+  color: var(--fg-soft);
+  font-size: 18px;
+  font-weight: 300;
+}
+.journal-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-block: 24px;
+}
+.journal input,
+.journal button {
+  border: 1px solid var(--line-strong);
+  background: var(--surface);
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: var(--fg);
+}
+.journal input {
+  min-width: 0;
+  flex: 1;
+}
+.journal button {
+  cursor: pointer;
+}
+.journal .filters {
+  margin-block: 24px 14px;
+}
+.journal a:focus-visible,
+.journal input:focus-visible,
+.journal button:focus-visible,
+.journal summary:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+.journal .post-head {
+  margin-bottom: 28px;
+}
+.journal .post-head > a {
+  font: 13px var(--font-mono);
+  color: var(--fg-soft);
+}
+.journal .post-head .tags {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: var(--purple);
+}
+.journal .byline {
+  color: var(--fg-soft);
+  margin-top: 16px;
+  font-size: 15px;
+}
+.journal .post-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+  gap: 48px;
+}
+.journal .post-content {
+  min-width: 0;
+}
+.journal .desktop-toc > div {
+  position: sticky;
+  top: 96px;
+}
+.journal .mobile-toc {
+  display: none;
+}
+.journal .prose {
+  color: var(--fg-soft);
+  font-size: 18px;
+  overflow-wrap: anywhere;
+}
+.journal .prose p,
+.journal .prose ul,
+.journal .prose ol,
+.journal .prose pre {
+  margin-block: 20px;
+}
+.journal .prose ul {
+  list-style: disc;
+  padding-left: 24px;
+}
+.journal .prose ol {
+  list-style: decimal;
+  padding-left: 24px;
+}
+.journal .prose h2 {
+  color: var(--fg);
+  font-size: 28px;
+  margin: 32px 0 12px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  scroll-margin-top: 96px;
+}
+.journal .prose h3 {
+  color: var(--fg);
+  font-size: 24px;
+  margin-block: 24px 12px;
+  font-weight: 600;
+  scroll-margin-top: 96px;
+}
+.journal .prose a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.journal .prose pre {
+  background: var(--code-bg);
+  color: var(--code-fg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px;
+  overflow: auto;
+}
+.journal .prose code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+.journal .prose :not(pre) > code {
+  color: var(--purple);
+  background: var(--code-bg);
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.journal .prose blockquote {
+  border-left: 3px solid var(--blue);
+  padding-left: 20px;
+}
+.journal .prose img {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 1023px) {
+  .journal .post-grid {
+    display: block;
+  }
+  .journal .desktop-toc {
+    display: none;
+  }
+  .journal .mobile-toc {
+    display: block;
+    margin-bottom: 32px;
+    padding: 12px 16px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+}
+@media (max-width: 600px) {
+  .journal-header {
+    margin-inline: 16px;
+    flex-wrap: wrap;
+  }
+  .journal-container {
+    padding-inline: 16px;
+  }
+  .journal-list,
+  .journal-post {
+    padding-top: 40px;
+  }
+  .journal-header nav a {
+    padding-inline: 8px;
+  }
+  .journal .pager {
+    gap: 8px;
+  }
+  .journal .pager-link {
+    padding-inline: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .journal * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

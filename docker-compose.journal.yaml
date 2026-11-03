@@ -1,0 +1,17 @@
+# Adapted from Brocoders relational compose; isolated, loopback-only development services.
+services:
+  postgres:
+    image: postgres:17-alpine
+    ports: ["127.0.0.1:55439:5432"]
+    environment:
+      POSTGRES_USER: journal
+      POSTGRES_PASSWORD: journal-local-only
+      POSTGRES_DB: quan_journal_test
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U journal -d quan_journal_test"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+    volumes: ["journal-data:/var/lib/postgresql/data"]
+volumes:
+  journal-data:

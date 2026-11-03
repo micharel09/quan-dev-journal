@@ -28,10 +28,10 @@ The first frontend build exposed Radix DirectionProvider being evaluated in the 
 
 ## Remaining evidence limits
 
-- GitHub Actions workflow is implemented and pins Ubuntu 24.04 (supported in this Playwright package's browser registry), but no hosted CI run is claimed before a requested push. Its constituent commands were executed locally on Ubuntu.
+- GitHub Actions pins Ubuntu 24.04. After the user authorized release, hosted run [41585507439](https://github.com/micharel09/quan-dev-journal/actions/runs/41585507439) passed on application commit `86936070cefc454726aa99d4fa644fddd23cdda3`, including backend/frontend lint, typecheck, build, PostgreSQL tests and eight Playwright cases.
 - Browser evidence is Chromium desktop/mobile emulation. Safari, Firefox, physical phones, load tests and production traffic are unverified.
 - Optional upstream social providers, email delivery, upload management and the full original generator/auth suite are outside this Journal acceptance run.
-- Public source/demo hosting is not published. Article body data is currently fetched client-side; full SSR indexing is not claimed. JWT role revocation follows upstream token-expiry behavior.
+- [Journal source](https://github.com/micharel09/quan-dev-journal) is public on `main`. The Journal application is not publicly deployed: no existing hosting target was configured, and the connected Railway account belongs to Fly. A question selecting a separate Journal project or source-only release is pending; existing Fly services remain untouched. Article body data is currently fetched client-side; full SSR indexing is not claimed. JWT role revocation follows upstream token-expiry behavior.
 - There was no matching Journal Linear task/project found; no task/project or issue update was fabricated.
 
 ## Retained preview resources
@@ -40,8 +40,10 @@ Retained for user review, not production:
 
 - Remote source/build: `/home/quan/quan-dev-journal-preview-20261103`; helper process PID 1697712 (`node scripts/preview.mjs`) owns API PID 1697719 on 127.0.0.1:3001 and Next.js PID 1697720 on 127.0.0.1:3000. Stop the verified helper when review ends. Restart after stopping these task-owned processes: `cd /home/quan/quan-dev-journal-preview-20261103 && node scripts/preview.mjs`.
 - Dedicated Compose database/project above is retained to preserve the two preview notes. After review, `docker compose -p quan-journal-preview-20261103 -f docker-compose.journal.yaml down` stops it; keep its volume until the notes/content are no longer needed. Never run broad Docker prune.
-- Portfolio preview: `/home/quan/quan-portfolio-preview-20261103`, loopback port 3199, Next.js PID 1700318.
-- Windows SSH forwarding process PID 1544 exposes `http://localhost:3000/blog`, `http://localhost:3001/docs` and `http://localhost:3199/projects/quan-dev-journal`. Stop only this verified `ssh.exe` process when review ends. If it has exited, recreate the three explicit loopback `ssh -L` forwards.
+- Portfolio is released at [quantm.is-a.dev/projects/quan-dev-journal](https://quantm.is-a.dev/projects/quan-dev-journal), commit `3b417fe022c9b033a2b9985bd61a7800454ef353`, Vercel Production deployment 7511444560. Live EN/VI desktop/mobile source-button navigation, responsive layout and previous Fly 404 checks passed. The obsolete portfolio preview process on port 3199 has stopped; its task-owned build copy remains at `/home/quan/quan-portfolio-preview-20261103` only for any later demo-link integration.
+- Windows SSH forwarding process PID 1544 retains the local Journal preview at `http://localhost:3000/blog` and API at `http://localhost:3001/docs`. Its old port-3199 forward has no listener after the portfolio production release. Stop only this verified `ssh.exe` process when local Journal review ends.
 - Local fixture admin: `admin@example.com` / `journal-test-password`, restricted to the dedicated test database. Generated auth secrets remain only in the ignored remote `.env`.
+
+The profile README was released on `micharel09/micharel09` main commit `3d9b10861c280ff5c66e2b5078ae26fa5c15ecf0`. Portfolio/profile checkouts and their remote refs were read back clean. This follow-up updates documentation only; application behavior is unchanged from the successful Journal CI commit above.
 
 Temporary source archives and test outputs have been removed. The cleanup tool's `Complete` action repeatedly reported `Cleanup registry is busy`; after verifying the registered path/session/task, no consumers, and no symlinks or Git directories, only `E:/CodexTemp/quan-dev-journal/journal-implementation-20261103-d8fb4cadaab6` was removed with native PowerShell. Read-back confirmed that directory is absent. A subsequent Complete -Apply run at 2026-11-03 05:36:39 UTC succeeded with State=deleted and Reason=verified-absent, completing registry reconciliation. No shared lock or other task was altered. No verification screenshots or traces are retained in the repositories. Product deliverables are the local source repositories, documentation and two Markdown notes.
